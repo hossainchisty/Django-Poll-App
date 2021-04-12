@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Available Polls</h3>
+            </div>
+            <ul class="list-group">
+                {% for items in polls %}
+                <li class="list-group-item">
+                    <strong>{{ items.question }}</strong>
+                    <span class="pull-right">
+                        <a href="{% url 'vote' items.id %}" class="btn btn-warning btn-xs">Vote</a> &nbsp;
+                        <a href="{% url 'results' items.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                    </span>
+                </li>
+                 {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
